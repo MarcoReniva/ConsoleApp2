@@ -388,7 +388,7 @@ namespace ConsoleApp2
             Console.ReadKey();
         }
 
-        // =================== LEVELS ===================
+        // =================== READING COMPREHENSION LEVELS ===================
         static void easy()
         {
             var stories = LoadStories("easy1.txt");
@@ -412,5 +412,13 @@ namespace ConsoleApp2
             var picked = stories[rng.Next(stories.Count)];
             DisplayStory(picked.Title, picked.Text, picked.Questions);
         }
+         static bool LogOut() 
+         {
+             Console.WriteLine("Logging you out...");
+             Thread.Sleep(1000);
+             Console.WriteLine("Logging you out...");
+        
+             return true;
+         }
     }
 }
