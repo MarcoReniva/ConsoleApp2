@@ -183,66 +183,70 @@ namespace ConsoleApp2
              Console.WriteLine(" |");
              Console.WriteLine("_|_");
         }
-         static void HangmanMenu(string currentUser)
+            static void HangmanMenu(string currentUser, int points)
          {
+             bool exitchoice = false;
              for (int wrongGuesses = 1; wrongGuesses <= 6; wrongGuesses++)
+             {
+                 Console.Clear();
+                 Console.Write("Playing as: " + currentUser); Console.Write("        Points: " + points);
+                 Console.WriteLine("\n=====================================");
+                 Console.WriteLine("        Hangman Game         ");
+                 Console.WriteLine("=====================================");
+        
+                 DrawHangman(wrongGuesses);
+                 Thread.Sleep(500);
+             }
+             Console.WriteLine("Choose your hangman mode:");
+             Console.WriteLine("[1] Easy");
+             Console.WriteLine("[2] Normal");
+             Console.WriteLine("[3] Hard");
+             Console.WriteLine("[0] Go Back to Main Menu");
+             Console.Write("Enter choice: ");
+             while (!exitchoice)
+             { 
+             string choice = Console.ReadLine();
+        
+                 switch (choice)
+                 {
+                     case "1":
+                         exitchoice = true;
+                         Console.Clear();
+                         HangmanEasy();
+                         break;
+                     case "2":
+                         exitchoice = true;
+                         Console.Clear();
+                         HangmanNormal();
+                         break;
+                     case "3":
+                         exitchoice = true;
+                         Console.Clear();
+                         HangmanHard();
+                         break;
+                     case "0":
+                         exitchoice = true;
+                         Console.Clear();
+                         //MAIN MENU HERE
+                         break;
+                     default:
+                         Console.WriteLine(" [Please enter a correct option.]");
+                         break;
+                 }
+             }
+         }
+         static void HangmanEasy()
          {
-             Console.Clear();
-             Console.WriteLine("Playing as: " + currentUser);
-             Console.WriteLine("=====================================");
-             Console.WriteLine("        Hangman Game         ");
-             Console.WriteLine("=====================================");
-    
-             DrawHangman(wrongGuesses);
-             Thread.Sleep(500);
+             Console.WriteLine("EASY MODE");
          }
-         Console.WriteLine("Choose your hangman mode:");
-         Console.WriteLine("[1] Easy");
-         Console.WriteLine("[2] Normal");
-         Console.WriteLine("[3] Hard");
-         Console.WriteLine("[0] Go Back to Main Menu");
-         Console.Write("Enter choice: ");
-         //STILL NOT DONE
+         static void HangmanNormal()
+         {
+             Console.WriteLine("NORMAL MODE");
          }
-        static void Readingcomp()
-        {
-            bool try4 = false;
-            while (!try4)
-            {
-                Console.WriteLine("==============Reading comprehension===========");
-                Console.WriteLine("Choose your Level of Difficulty");
-                Console.WriteLine("[A]. Easy Level");
-                Console.WriteLine("[B]. Medium Level");
-                Console.WriteLine("[C]. Hard Level");
-                Console.WriteLine("[D]. Exit");
-                Console.WriteLine("===============================================");
-                Console.Write("Enter your choice: ");
-                string choice = Console.ReadLine().ToUpper();
-                switch (choice)
-                {
-                    case "A":
-                        easy();
-                        try4 = true;
-                        break;
-                    case "B":
-                        medium();
-                        try4 = true;
-                        break;
-                    case "C":
-                        hard();
-                        try4 = true;
-                        break;
-                    case "D":
-                        try4 = true;
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Invalid Option pls enter either A, B, C or D");
-                        try4 = false;
-                        break;
-                }
-            }
-        }
+         static void HangmanHard()
+         {
+             Console.WriteLine("HARD MODE");
+         }
 
         // =================== PARSER ===================
         static List<(string Title, string Text, List<(string Prompt, string[] Choices, char Answer)> Questions)>
