@@ -666,6 +666,14 @@ namespace ConsoleApp2
 
             return stories;
         }
+         static bool LogOut() 
+         {
+             Console.WriteLine("Logging you out...");
+             Thread.Sleep(1000);
+             Console.WriteLine("Logging you out...");
+        
+             return true;
+         }
  //  DISPLAY 
  static void DisplayStory(string title, string text, List<(string Prompt, string[] Choices, char Answer)> questions)
  {
