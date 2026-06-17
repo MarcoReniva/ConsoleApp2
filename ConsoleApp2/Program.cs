@@ -173,7 +173,37 @@ namespace ConsoleApp2
                 }
             }
         }
-
+         static void DrawHangman(int stage) //HANGMAN ANIMATION
+         {
+             Console.WriteLine(" +---+");
+             Console.WriteLine(" |   |");
+             Console.WriteLine($" |   {(stage >= 1 ? "O" : " ")}");
+             Console.WriteLine($" |  {(stage >= 3 ? "/" : " ")}{(stage >= 2 ? "|" : " ")}{(stage >= 4 ? "\\" : " ")}");
+             Console.WriteLine($" |  {(stage >= 5 ? "/" : " ")} {(stage >= 6 ? "\\" : " ")}");
+             Console.WriteLine(" |");
+             Console.WriteLine("_|_");
+        }
+         static void HangmanMenu(string currentUser)
+         {
+             for (int wrongGuesses = 1; wrongGuesses <= 6; wrongGuesses++)
+         {
+             Console.Clear();
+             Console.WriteLine("Playing as: " + currentUser);
+             Console.WriteLine("=====================================");
+             Console.WriteLine("        Hangman Game         ");
+             Console.WriteLine("=====================================");
+    
+             DrawHangman(wrongGuesses);
+             Thread.Sleep(500);
+         }
+         Console.WriteLine("Choose your hangman mode:");
+         Console.WriteLine("[1] Easy");
+         Console.WriteLine("[2] Normal");
+         Console.WriteLine("[3] Hard");
+         Console.WriteLine("[0] Go Back to Main Menu");
+         Console.Write("Enter choice: ");
+         //STILL NOT DONE
+         }
         static void Readingcomp()
         {
             bool try4 = false;
